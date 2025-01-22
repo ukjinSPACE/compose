@@ -1,0 +1,28 @@
+spring:
+ application:
+  name: backend
+ datasource:
+  url: jdbc:mysql://database:3306/todo  # 도커 컴포즈 내에서 접속할때
+  #url: jdbc:mysql://127.0.0.1:3306/todo  # 외부에서 접속시
+  username: root
+  password: p1234
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  #initialization-mode: always # 초기화 동작, 애플리케이션이 실행될 때마다 데이터베이스 초기화 스크립트를 실행
+  # schema.sql과 data.sql 파일을 사용하여 데이터베이스를 초기화할 경우
+ jpa:
+  show-sql: true      # 쿼리 내용 로그에 출력
+  hibernate:
+   ddl-auto: update   # 디비에 직접 영향 => 테이블생성, 데이터 주입,....
+
+
+
+
+
+
+
+
+
+
+
+
+
