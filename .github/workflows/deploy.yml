@@ -80,6 +80,22 @@ jobs:
     # sudo apt-get update
     # Docker 설치
     # sudo apt-get install docker-ce docker-ce-cli containerd.io -y
-
-    #deploy:
     # 도커 컴포즈 진행
+    deploy:
+      runs-on: ubuntu-latest
+      # 해당 잡이 진행 될려면 사전에 반드시 다른 잡이 선행되야 한다
+      needs: docker-cicd
+      steps:
+        - name: ec2에 SSH 젖ㅂ속 -> 도커 컴포즈 가동 -> 서비스 세팅완료
+          uses: appleboy/ssh-action@v1.1.0
+          with:
+            host: ${{ secrets.EC2_HOST }}
+            username: ${{ secrets.EC2_USERNAME }}
+            key: ${{ secrets.EC2_KEY }}
+            script_stop: true
+            # 이미지를 갱신하지는 않는다 -> 도커컴포즈 파일에 기술하여 버전관리 할 수 있다
+            # 이미지에 TAG를 기입하여 버전을 관리한다면 매번 갱신 가능(이미지)
+            script: |
+              sudo docker compose down
+              sudo docker compose up -d
+
