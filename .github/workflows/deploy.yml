@@ -43,14 +43,14 @@ jobs:
       # 백엔드 이미지 생성 -> 허브(레퍼지토리) 푸시
       - name: 백엔드 이미지 생성 -> 허브(레퍼지토리) 푸시
         run: |
-          docker build -t edu2ucoc/demo_backend ./backend
-          docker push edu2ucoc/demo_backend
+          docker build -t ukjinSPACE/demo_backend ./backend
+          docker push ukjinSPACE/demo_backend
 
       # 프런트 이미지 생성 -> 허브(레퍼지토리) 푸시
       - name: 프런트 이미지 생성 -> 허브(레퍼지토리) 푸시
         run: |
-          docker build -t edu2ucoc/demo_frontend ./frontend
-          docker push edu2ucoc/demo_frontend
+          docker build -t ukjinSPACE/demo_frontend ./frontend
+          docker push ukjinSPACE/demo_frontend
 
       # eC2 서버로 필요 파일 업로드(YML, nginx/*.conf)
 
