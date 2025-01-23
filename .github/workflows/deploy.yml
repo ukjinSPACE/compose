@@ -1,0 +1,22 @@
+name: docker, ci/cd, ec2, hub
+
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  docker-cicd:
+    runs-on: ubuntu-latest
+    steps:
+      # 소스코드 체크아웃
+      # jdk 17 설치
+      # 필요시 현재까지 환경 수시 확인 가능
+      # 환경변수 동적 세팅 X(여기서는 제외)
+      # 빌드, 단위 테스트 -> 편의상 개발자 pc에서 (프, 백)선행수행(생략)
+      # 도커 관련 액션 -> 도커 작업을 위한 환경
+      # 도커 허브 로그인 -> 계정 정보 -> 시크릿 변수
+      # 백엔드, 프런트 이미지 생성 -> 허브(레퍼지토리) 푸시
+      # ec2 서버로 필요 파일 업로드(YML, nginx/*.conf)
+
+#deploy:
+      # 도커 컴포즈 진행
