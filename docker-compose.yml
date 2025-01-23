@@ -31,8 +31,9 @@ services:
       --bind-address=0.0.0.0      # 모든 IP에 대해 접속 OK (경우에 따라 생략 가능함) 
   backend:
     container_name: server        # 컨테이너명과 서비스명을 다르게 구성
-    build:
-      context: ./backend          # 현재 파일 위치에서 backend 밑에 도커파일을 이용하여 이미지 구성
+    #build:
+    #  context: ./backend          # 현재 파일 위치에서 backend 밑에 도커파일을 이용하여 이미지 구성
+    image: ukjin128/demo_backend
     ports:
       - "8080:8080"               # 스프링부트 포트    
     environment:                  # 도커컴포즈내에 database의 컨테이너명
@@ -46,8 +47,9 @@ services:
   frontend:
     container_name: frontend
     # 백엔드까지 완료된 분들은 프런트엔드 도커파일 작업 진행
-    build: 
-      context: ./frontend
+    #build:
+    #  context: ./frontend
+    image: ukjin128/demo_frontend
     ports:
       - "3000:80"               # nginx에 빌드된 결과를 넣어서 컨테이너 가동
     networks:
